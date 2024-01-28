@@ -1,9 +1,16 @@
-const express = require("express")
-const agentController = require('./controllers/agentController')
-const router = express.Router()
+const express = require("express");
+const agentController = require('../controllers/agentController');
+const router = express.Router();
 
-const { catchAsync } = require("../middleware/errorHandler")
+import catchAsync from '../middleware/errorHandler';
 
-router.post('', catchAsync(agentController.createCourse))
+// Enable CORS for this specific route
+router.post('', catchAsync((res: any) => {
+    // Set CORS headers for this route
+    res.header('Access-Control-Allow-Origin', 'http://localhost:3000');
+
+    // Call the actual controller function
+    agentController.getTranslationFromSentence;
+}));
 
 module.exports = router;
